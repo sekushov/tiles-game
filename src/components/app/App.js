@@ -1,32 +1,40 @@
 import './App.css';
 import TilesBoard from '../tilesBoard/TilesBoard';
 import * as actions from '../../actions';
+import { useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { useSelector, useDispatch } from 'react-redux';
 
 function App() {
   const dispatch = useDispatch();
-  const {toggleVisible} = bindActionCreators(actions, dispatch);
+  const {setClosed, disappearTiles} = bindActionCreators(actions, dispatch);
   
   const tilesArray = useSelector(state => state.tiles);
-  const visibleTiles = useSelector(state => state.visibleTiles);
 
-  const compareTiles = (tiles) => {
-      console.log(tiles);
+  useEffect(() => {
+    const compareTiles = (tiles) => {
       if (tiles[0].color === tiles[1].color) {
-          console.log('congratulations')
+        setTimeout(() => {
+          disappearTiles(tiles[0].num);
+          disappearTiles(tiles[1].num);
+        }, 500);
       } else {
-          setTimeout(() => {
-              toggleVisible(tiles[1].num);
-              toggleVisible(tiles[0].num);
-          }, 1000);
+        setTimeout(() => {
+          setClosed(tiles[0].num);
+          setClosed(tiles[1].num);
+        }, 500);
       }
-  }
-  if (visibleTiles.length >= 2) compareTiles(visibleTiles)
+    }
+    const visibleTiles = () => tilesArray.filter((tile, i) => {
+      if (tile.visible) tile.num = i
+      return tile.visible
+    })
+    if (visibleTiles().length >= 2) compareTiles(visibleTiles())
+  }, [tilesArray]);
 
 
   return (
-    <TilesBoard tilesArray={tilesArray} compareTiles={compareTiles} />
+    <TilesBoard tilesArray={tilesArray} />
   );
 }
 

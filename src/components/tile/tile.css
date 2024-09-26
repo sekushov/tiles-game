@@ -1,9 +1,39 @@
 .tile {
     background-color: #a2a2a2;
+    transition: 0.3s;
 }
 .tile.active-0 {
-    background-color: #4850ec;
+    background-color: #ee5151;
+    transform: rotateY(180deg);
 }
 .tile.active-1 {
-    background-color: #ee515c;
+    background-color: #ee9551;
+    transform: rotateY(180deg);
+}
+.tile.active-2 {
+    background-color: #e3ee51;
+    transform: rotateY(180deg);
+}
+.tile.active-3 {
+    background-color: #59ee51;
+    transform: rotateY(180deg);
+}
+.tile.active-4 {
+    background-color: #51c9ee;
+    transform: rotateY(180deg);
+}
+.tile.active-5 {
+    background-color: #5159ee;
+    transform: rotateY(180deg);
+}
+.tile.active-6 {
+    background-color: #a551ee;
+    transform: rotateY(180deg);
+}
+.tile.active-7 {
+    background-color: #ee51c4;
+    transform: rotateY(180deg);
+}
+.tile.disappear {
+    background-color: #ffffff;
 }

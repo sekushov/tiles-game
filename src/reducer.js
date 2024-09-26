@@ -1,7 +1,7 @@
 const setTiles = () => {
     let tilesArray = [];
     for (let i = 0; i < 16; i++) {
-        tilesArray[i] = i % 2 === 0 ? {color: 0} : {color: 1};
+        tilesArray[i] = {color: (i % 8)}
     }
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -12,20 +12,31 @@ const setTiles = () => {
     shuffle(tilesArray)
     return tilesArray
 }
-const initialState = {tiles: setTiles(), visibleTiles: []};
+const initialState = {tiles: setTiles()};
 
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case "TOGGLE_VISIBLE": {
-            const differences = state.visibleTiles.filter(visible => (visible.num !== action.payload.num));
-            if (differences.length === state.visibleTiles.length) {
-                console.log('wtf');
-                return {...state, visibleTiles: [...state.visibleTiles, action.payload]}
-            } else {
-                return {...state, visibleTiles: differences}
-            }
-            
+        case "SET_OPENED": {
+            return {...state, tiles: state.tiles.map((tile, i) => {
+                if (i === action.payload) tile.visible = true
+                return tile
+            })}
+        }
+        case "SET_CLOSED": {
+            return {...state, tiles: state.tiles.map((tile, i) => {
+                if (i === action.payload) tile.visible = false
+                return tile
+            })}
+        }
+        case "DISAPPEAR_TILES": {
+            return {...state, tiles: state.tiles.map((tile, i) => {
+                if (i === action.payload) {
+                    tile.disappear = true;
+                    tile.visible = false;
+                }
+                return tile
+            })}
         }
         default: return state
     }
