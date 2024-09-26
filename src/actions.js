@@ -1,0 +1,1 @@
+export const toggleVisible = (data) => ({type: "TOGGLE_VISIBLE", payload: data});

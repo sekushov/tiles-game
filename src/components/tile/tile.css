@@ -1,0 +1,9 @@
+.tile {
+    background-color: #a2a2a2;
+}
+.tile.active-0 {
+    background-color: #4850ec;
+}
+.tile.active-1 {
+    background-color: #ee515c;
+}

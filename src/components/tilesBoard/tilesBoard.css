@@ -1,0 +1,8 @@
+.tilesBoard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin: 0 auto;
+    width: 400px;
+    height: 400px;
+}
