@@ -1,0 +1,8 @@
+.app {
+    width: 90vw;
+    height: 90vw;
+    max-width: 400px;
+    margin: 0 auto;
+    font-family: "DynaPuff", system-ui;
+    color: #595959;
+}

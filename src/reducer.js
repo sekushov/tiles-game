@@ -12,18 +12,18 @@ const setTiles = () => {
     shuffle(tilesArray)
     return tilesArray
 }
-const initialState = {tiles: setTiles()};
+const initialState = {tiles: setTiles(), rounds: 0};
 
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case "SET_OPENED": {
+        case "OPEN_TILE": {
             return {...state, tiles: state.tiles.map((tile, i) => {
                 if (i === action.payload) tile.visible = true
                 return tile
             })}
         }
-        case "SET_CLOSED": {
+        case "CLOSE_TILE": {
             return {...state, tiles: state.tiles.map((tile, i) => {
                 if (i === action.payload) tile.visible = false
                 return tile
@@ -37,6 +37,18 @@ const reducer = (state = initialState, action) => {
                 }
                 return tile
             })}
+        }
+        case "COUNT_ROUNDS": {
+            return {...state, rounds: state.rounds + 1}
+        }
+        case "START_TIMER": {
+            return {...state, startTime: action.payload}
+        }
+        case "FINISH": {
+            return {...state, isFinish: true}
+        }
+        case "TIME": {
+            return {...state, time: action.payload}
         }
         default: return state
     }

@@ -1,0 +1,8 @@
+.info-panel {
+    display: flex;
+    margin: 20px auto;
+    justify-content: space-evenly;
+}
+.info-panel__block {
+    width: 120px;
+}
