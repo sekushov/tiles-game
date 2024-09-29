@@ -5,3 +5,4 @@ export const countRounds = () => ({type: "COUNT_ROUNDS"});
 export const startTimer = (time) => ({type: "START_TIMER", payload: time});
 export const setFinish = () => ({type: "FINISH"});
 export const setTime = (time) => ({type: "TIME", payload: time});
+export const returnState = () => ({type: "RETURN_STATE"});

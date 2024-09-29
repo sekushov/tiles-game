@@ -32,11 +32,24 @@
 .results-info__block-title {
     font-weight: 400;
     font-size: 28px;
-    color: #595959;
+    color: #464646;
 }
 .results-info__results {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     margin-top: 20px;
+}
+.results-info__return-btn {
+    width: 50px;
+    margin: 0 auto;
+    margin-top: 30px;
+    border: 4px solid #b9b9b9;
+    border-radius: 10px;
+    padding: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.results-info__return-btn:hover {
+    padding: 2px;
 }

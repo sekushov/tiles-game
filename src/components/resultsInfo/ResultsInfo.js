@@ -1,10 +1,13 @@
 import './resultsInfo.css';
-import { useSelector } from 'react-redux';
+import returnBtn from '../../img/return.png';
+import { useSelector, useDispatch } from 'react-redux';
+import {returnState} from '../../actions';
 
 function ResultsInfo () {
     const isFinish = useSelector(state => state.isFinish);
     const rounds = useSelector(state => state.rounds);
     const time = useSelector(state => state.time);
+    const dispatch = useDispatch();
     const clazz = () => isFinish ? 'results-info__wrapper active' : 'results-info__wrapper';
 
 
@@ -22,6 +25,7 @@ function ResultsInfo () {
                         <div>{time}</div>
                     </div>
                 </div>
+                <img src={returnBtn} alt="return game" className="results-info__return-btn" onClick={() => dispatch(returnState())} />
             </div>
         </div>
         

@@ -12,10 +12,10 @@ const setTiles = () => {
     shuffle(tilesArray)
     return tilesArray
 }
-const initialState = {tiles: setTiles(), rounds: 0};
+const initialState = () => ({tiles: setTiles(), rounds: 0});
 
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState(), action) => {
     switch (action.type) {
         case "OPEN_TILE": {
             return {...state, tiles: state.tiles.map((tile, i) => {
@@ -49,6 +49,9 @@ const reducer = (state = initialState, action) => {
         }
         case "TIME": {
             return {...state, time: action.payload}
+        }
+        case "RETURN_STATE": {
+            return initialState()
         }
         default: return state
     }

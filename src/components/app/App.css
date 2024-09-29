@@ -1,7 +1,13 @@
 .app {
     width: 90vw;
-    height: 90vw;
-    max-width: 400px;
+    max-width: 500px;
+    height: 100vh;
+    padding: 20px 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
     font-family: "DynaPuff", system-ui;
     color: #595959;
